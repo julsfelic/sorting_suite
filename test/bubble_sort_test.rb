@@ -25,4 +25,9 @@ class BubbleSortTest < Minitest::Test
   def test_sort_returns_sorted_array_of_two_elements
     assert_equal [1, 2], @sorter.sort([2, 1])
   end
+
+  meta t: true
+  def test_sort_returns_sorted_array_of_three_elements
+    assert_equal [1, 2, 3], @sorter.sort([2, 1, 3])
+  end
 end
