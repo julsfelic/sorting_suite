@@ -45,11 +45,21 @@ class BubbleSortTest < Minitest::Test
   def test_sort_returns_sorted_array_when_given_reversed_array
     assert_equal [1, 2, 3, 4], @sorter.sort([4, 3, 2, 1])
   end
-  
+
   def test_values_to_compare_gives_us_back_array_with_two_values
     values = [1, 2, 3, 4]
     values_pair = @sorter.values_to_compare(values, 0)
 
     assert_equal [1, 2], values_pair
+  end
+
+  def test_swap_values_properly_switches_values_positions
+    values = [2, 1, 3]
+    n = 0
+    values_pair = @sorter.values_to_compare(values, n)
+
+    @sorter.swap_values(values_pair, values, n)
+
+    assert_equal [1, 2, 3], values
   end
 end
