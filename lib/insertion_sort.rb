@@ -23,6 +23,7 @@ class InsertionSort
         if value < sorted[n]
           sorted.insert(n, value)
           inserted = true
+          break
         end
       end
       sorted << value unless inserted
