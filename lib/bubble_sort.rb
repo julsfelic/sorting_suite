@@ -15,26 +15,26 @@ class BubbleSort
     end
     values
   end
-end
 
-def sort_values(values, amount_of_swap_checks)
-  @swap_value = 0
-  0.upto(amount_of_swap_checks) do |n|
-    values_pair = values_to_compare(values, n)
-    if values_pair[0] > values_pair[1]
-      swap_values(values_pair, values, n)
-      @swap_value += 1
+  def sort_values(values, amount_of_swap_checks)
+    @swap_value = 0
+    0.upto(amount_of_swap_checks) do |n|
+      values_pair = values_to_compare(values, n)
+      if values_pair[0] > values_pair[1]
+        swap_values(values_pair, values, n)
+        @swap_value += 1
+      end
     end
   end
-end
 
-def values_to_compare(values, n)
-  [values[n], values[n + 1]]
-end
+  def values_to_compare(values, n)
+    [values[n], values[n + 1]]
+  end
 
-def swap_values(values_pair, values, n)
-  values[n]     = values_pair[1]
-  values[n + 1] = values_pair[0]
+  def swap_values(values_pair, values, n)
+    values[n]     = values_pair[1]
+    values[n + 1] = values_pair[0]
+  end
 end
 
 if __FILE__ == $0
