@@ -21,4 +21,8 @@ class InsertionSortTest < Minitest::Test
   def test_sort_returns_an_empty_array_if_empty_array_is_passed_in
     assert_equal [], @sorter.sort([])
   end
+
+  def test_sort_returns_sorted_array_of_one_element
+    assert_equal [1], @sorter.sort([1])
+  end
 end
