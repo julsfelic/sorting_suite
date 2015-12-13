@@ -17,4 +17,8 @@ class MergeSortTest < Minitest::Test
   def test_sort_returns_empty_arary_if_given_no_argument
     assert_equal [], @sorter.sort
   end
+
+  def test_sort_returns_an_empty_array_if_empty_array_is_passed_in
+    assert_equal [], @sorter.sort([])
+  end
 end
