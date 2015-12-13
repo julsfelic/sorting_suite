@@ -46,6 +46,10 @@ class BubbleSortTest < Minitest::Test
     assert_equal [1, 2, 3, 4], @sorter.sort([4, 3, 2, 1])
   end
 
+  def test_can_sort_letters
+    assert_equal ['a', 'c', 'j', 'm','z'], @sorter.sort(['a', 'z', 'c', 'm', 'j'])
+  end
+
   def test_values_to_compare_gives_us_back_array_with_two_values
     values = [1, 2, 3, 4]
     values_pair = @sorter.values_to_compare(values, 0)

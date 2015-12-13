@@ -39,5 +39,5 @@ end
 
 if __FILE__ == $0
   sorter = BubbleSort.new
-  p sorter.sort([4, 1, 3, 2])
+  p sorter.sort(['a', 'z', 'c', 'm', 'j'])
 end
