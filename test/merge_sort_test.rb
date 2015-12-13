@@ -2,9 +2,15 @@ require 'minitest'
 require 'merge_sort'
 
 class MergeSortTest < Minitest::Test
-  def test_can_create_instances
-    sorter = MergeSort.new
+  def setup
+    @sorter = MergeSort.new
+  end
 
-    assert_instance_of MergeSort, sorter
+  def test_can_create_instances
+    assert_instance_of MergeSort, @sorter
+  end
+
+  def test_sort_returns_message_if_not_given_an_array
+    assert_equal "Give me an Array fool!", @sorter.sort(8)
   end
 end
