@@ -37,4 +37,8 @@ class MergeSortTest < Minitest::Test
   def test_sort_returns_sorted_array_of_four_elements
     assert_equal [1, 2, 3, 4], @sorter.sort([4, 1, 3, 2])
   end
+
+  def test_sort_returns_sorted_array_of_many_elements
+    assert_equal [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], @sorter.sort([2, 4, 1, 3, 9, 7, 8, 0, 5, 6])
+  end
 end
