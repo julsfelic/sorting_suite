@@ -57,4 +57,8 @@ class MergeSortTest < Minitest::Test
 
     assert_equal [1, 2, 3, 4, 5, 6], @sorter.combine_values(left_value, right_value)
   end
+
+  def test_compare_values_properly_swaps_values
+    assert_equal [1, 2], @sorter.compare_values(2, 1)
+  end
 end
