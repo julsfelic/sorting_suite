@@ -37,7 +37,7 @@ class MergeSortTest < Minitest::Test
   def test_sort_returns_sorted_array_of_four_elements
     assert_equal [1, 2, 3, 4], @sorter.sort([4, 1, 3, 2])
   end
-  
+
   def test_sort_returns_sorted_array_of_many_elements
     assert_equal [0, 1, 2, 3, 4, 5, 6, 7, 8, 9], @sorter.sort([2, 4, 1, 3, 9, 7, 8, 0, 5, 6])
   end
@@ -50,11 +50,11 @@ class MergeSortTest < Minitest::Test
     assert_equal [1, 2, 3, 4], @sorter.sort_values([3, 2, 4, 1])
   end
 
-  def test_combined_values_properly_combines_left_and_right_values
+  def test_merged_array_properly_merges_left_and_right_values
     left_value  = [1, 3, 5]
     right_value = [2, 4, 6]
 
-    assert_equal [1, 2, 3, 4, 5, 6], @sorter.combined_values(left_value, right_value)
+    assert_equal [1, 2, 3, 4, 5, 6], @sorter.merged_array(left_value, right_value)
   end
 
   def test_compare_values_properly_swaps_values

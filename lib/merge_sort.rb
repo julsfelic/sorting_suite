@@ -17,16 +17,16 @@ class MergeSort
       left_values  = sort_values(values.slice!(0..split))
       right_values = sort_values(values.slice!(0..-1))
     end
-    return combined_values(left_values, right_values)
+    return merged_array(left_values, right_values)
   end
 
-  def combined_values(left_values, right_values, sorted_values=[])
+  def merged_array(left_values, right_values, sorted_values=[])
     count = left_values.count + right_values.count
-    loop_through_values_and_combine(left_values, right_values, count, sorted_values)
+    loop_through_values_and_merge(left_values, right_values, count, sorted_values)
     sorted_values
   end
 
-  def loop_through_values_and_combine(left_values, right_values, n, sorted_values)
+  def loop_through_values_and_merge(left_values, right_values, n, sorted_values)
     n.times do
       next sorted_values << left_values.shift if right_values[0].nil?
       next sorted_values << right_values.shift if left_values[0].nil?
