@@ -128,15 +128,16 @@ module SortingSuite
       begin_time = Time.now.usec
       sorting_algorithm.new.sort(unsorted_array)
       end_time = Time.now.usec
-      total_time = (end_time - begin_time) * 10.0e-6
-      "#{sorting_algorithm.new.class} took #{total_time} seconds"
+      total_time = (end_time - begin_time) #* 10.0e-6
+      "#{sorting_algorithm.new.class} took #{total_time} microseconds"
     end
   end
 end
 
 if __FILE__ == $0
+  unsorted_array = [10, 1, 9, 2, 8, 3, 7, 4, 6, 5]
   benchmark = SortingSuite::Benchmark.new
-  puts benchmark.time(SortingSuite::BubbleSort,     [3, 3, 4, 5, 1])
-  puts benchmark.time(SortingSuite::InsertionSort,  [3, 3, 4, 5, 1])
-  puts benchmark.time(SortingSuite::MergeSort,      [3, 3, 4, 5, 1])
+  puts benchmark.time(SortingSuite::BubbleSort,     unsorted_array)
+  puts benchmark.time(SortingSuite::InsertionSort,  unsorted_array)
+  puts benchmark.time(SortingSuite::MergeSort,      unsorted_array)
 end
