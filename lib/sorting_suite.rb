@@ -1,3 +1,5 @@
+require 'pry'
+
 module SortingSuite
   class BubbleSort
     attr_reader :swap_value
@@ -122,9 +124,19 @@ module SortingSuite
   end
 
   class Benchmark
+    def time(sorting_algorithm, unsorted_array)
+      begin_time = Time.now.usec
+      sorting_algorithm.new.sort(unsorted_array)
+      end_time = Time.now.usec
+      total_time = (end_time - begin_time) * 10.0e-6
+      "#{sorting_algorithm.new.class} took #{total_time} seconds"
+    end
   end
 end
 
 if __FILE__ == $0
-
+  benchmark = SortingSuite::Benchmark.new
+  puts benchmark.time(SortingSuite::BubbleSort,     [3, 3, 4, 5, 1])
+  puts benchmark.time(SortingSuite::InsertionSort,  [3, 3, 4, 5, 1])
+  puts benchmark.time(SortingSuite::MergeSort,      [3, 3, 4, 5, 1])
 end

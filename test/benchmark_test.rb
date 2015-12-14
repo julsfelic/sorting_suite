@@ -2,9 +2,11 @@ require 'minitest'
 require 'sorting_suite'
 
 class BenchmarkTest < Minitest::Test
-  def test_can_create_instances
-    benchmark = SortingSuite::Benchmark.new
+  def setup
+    @benchmark = SortingSuite::Benchmark.new
+  end
 
-    assert_instance_of SortingSuite::Benchmark, benchmark
+  def test_can_create_instances
+    assert_instance_of SortingSuite::Benchmark, @benchmark
   end
 end
