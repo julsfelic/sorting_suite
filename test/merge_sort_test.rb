@@ -48,7 +48,13 @@ class MergeSortTest < Minitest::Test
   end
 
   def test_sort_values_returns_values_in_order
-    sorted_values = @sorter.sort_values([3, 2, 4, 1])
-    assert_equal [1, 2, 3, 4], sorted_values
+    assert_equal [1, 2, 3, 4], @sorter.sort_values([3, 2, 4, 1])
+  end
+
+  def test_combine_values_properly_combines_left_and_right_values
+    left_value  = [1, 3, 5]
+    right_value = [2, 4, 6]
+
+    assert_equal [1, 2, 3, 4, 5, 6], @sorter.combine_values(left_value, right_value)
   end
 end
