@@ -5,45 +5,34 @@ class MergeSort
   def sort(values=[])
     return "Give me an Array fool!" unless values.is_a?(Array)
     return values if values[1] == nil
-
-    values = split_values(values)
-
-    values
+    sort_values(values)
   end
 
-  def split_values(values)
-    split = values.count / 2.0
-    if split < 1.0
-      return values
-    elsif split == 1.0
-      left_values = values[0]
-      right_values = values[1]
-      return compare_values(left_values, right_values)
+  def sort_values(values)
+    return values if values.count == 1
+    split = ((values.count / 2.0) - 1.0).round
+    if values.count == 2
+      return compare_values(values[0], values[1])
     else
-      left_values  = values.slice!(0..split)
-      right_values = values.slice!(0..-1)
+      left_values  = sort_values(values.slice!(0..split))
+      right_values = sort_values(values.slice!(0..-1))
     end
+    return combine_values(left_values, right_values)
+  end
 
-    if left_values.is_a?(Array)
-      return_value_left = split_values(left_values)
-    end
-    if right_values.is_a?(Array)
-      return_value_right = split_values(right_values)
-    end
-    return_value_left
-    return_value_right
-
-    return_value_right.each do |value|
-      0.upto(return_value_left.count - 1) do |n|
-        if value < return_value_left[n]
-          return_value_left.insert(n, value)
-          break
-        end
+  def combine_values(left_values, right_values)
+    sorted_values = []
+    length_of_values = left_values.count + right_values.count
+    length_of_values.times do
+      next sorted_values << left_values.shift if right_values[0].nil?
+      next sorted_values << right_values.shift if left_values[0].nil?
+      if left_values[0] < right_values[0]
+        sorted_values << left_values.shift
+      else
+        sorted_values << right_values.shift
       end
-      return_value_left << value unless return_value_left.include?(value)
     end
-
-    return_value_left
+    sorted_values
   end
 
   def compare_values(left_value, right_value)
